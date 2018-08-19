@@ -140,7 +140,7 @@ var dsplay_template = {
 
 ### Using `dsplay-data.js` vars in template
 
-In this project you can access the values of `dsplay-data.js` through window global object. 
+In this project, you can access the values of `dsplay-data.js` through `window` global object. 
 
 Here is a small snippet showing how to get media duration inside a React component:
 
