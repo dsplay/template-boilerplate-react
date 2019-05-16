@@ -73,6 +73,42 @@ var dsplay_media = {
                  // You define the value of source when create a RSS Channel.
   title: 'Breaking News', // The media title
   
+  // Brazilian Weather Forecast
+  title: 'Weather Forecast'
+  city: 'Recife',
+  text: 'Céu Nublado com Pancadas de Chuva',
+  weatherCode: 'ps' // possible values in http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+  forecasts: [
+    {
+      code: 'ps' // possible values in http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+      date: 'Hoje'
+      min: 25,
+      max: 30,
+      uvi: 10,
+    },
+    {
+      code: 'ps' // possible values in http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+      date: '27/03/2014'
+      min: 25,
+      max: 30,
+      uvi: 10,
+    },
+    {
+      code: 'ps' // possible values in http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+      date: '28/03/2014'
+      min: 27,
+      max: 30,
+      uvi: 11,
+    },
+    {
+      code: 'ps' // possible values in http://servicos.cptec.inpe.br/XML/#condicoes-tempo
+      date: '29/03/2014'
+      min: 22,
+      max: 28
+      uvi: 10,
+    },
+  ],
+    
   // JSON Service specific
   result: {} // A JSON object containg the service result
   
