@@ -34,7 +34,7 @@ var dsplay_template = {
 
 ```
 
-In this boilerplate project the `dsplay-data.js` in located at `public` folder.
+In this boilerplate project, `dsplay-data.js` is located at `public` folder.
 
 > During template development, `dsplay-data.js` will be just a mock with your test data. The DSPLAY Player App will automatically replace this file with real content at runtime.
 
@@ -42,7 +42,7 @@ In this boilerplate project the `dsplay-data.js` in located at `public` folder.
 
 The content of `dsplay_media` and `dsplay_config` are predefined by DSPLAY. 
 
-The content of `dsplay_template` must be defined for you (template creator). 
+The content of `dsplay_template` must be defined by you (template creator). 
 
 > remember to register the variables defined in `dsplay_template` as "Template Vars" in the template creation form (on [DSPLAY Web Manager](https://manager.dsplay.tv/template/create)), informing the same name and type
 
