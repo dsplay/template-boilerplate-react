@@ -181,7 +181,7 @@ The easiest way to access `dsplay-data.js` var values in your project is by usin
 Here is a small snippet showing how to get values inside a React component:
 
 ```jsx
-import React, { Component } from 'react';
+import React from 'react';
 import {
     // values
     media, // current media
