@@ -40,7 +40,7 @@ In this boilerplate project, `dsplay-data.js` is located at `public` folder.
 
 ### Provided info
 
-The content of `dsplay_media` and `dsplay_config` are predefined by DSPLAY. 
+The content of `dsplay_media` and `dsplay_config` is predefined by DSPLAY. 
 
 The content of `dsplay_template` must be defined by you (template creator). 
 
@@ -269,8 +269,6 @@ class App extends Component {
 export default App;
 
 ```
-
-> Notice that we use `window.dsplay_media || window.media`. This is a fallback for compatibility with previous DSPLAY Player versions, when the variables did not have the `dsplay_` prefix.
 
 ## Release build
 
