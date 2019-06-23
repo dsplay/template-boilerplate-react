@@ -15,6 +15,10 @@ var template = {
     
     // bg_horizontal: '../test-data/bg-instagram.jpg',
     // bg_vertical: '../test-data/bg-instagram.jpg',
+
+
+    title: "My Super Template",
+    expanded: "false",
     
 };
 
