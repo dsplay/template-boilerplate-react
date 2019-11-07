@@ -59,7 +59,7 @@ var dsplay_media = {
   
   // Image Media specific
   imagePath: '/path/to/image', // The path of the selected image
-  images: ['/path/to/image/1', '/path/to/image/1'], // Paths of all images
+  images: ['/path/to/image/1', '/path/to/image/2'], // Paths of all images
   
   // RSS Media specific
   imageUrl: '/path/to/image', // Image path of selected RSS Item (if available)
