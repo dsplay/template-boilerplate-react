@@ -108,6 +108,21 @@ var dsplay_media = {
       uvi: 10,
     },
   ],
+
+  // Brazilian Daily Horoscope
+  // (the `iteration` variable can be used to rotate between signs)
+  title: 'Daily Horoscope',
+  signs: [
+    {
+      name: "Aries",
+      text: "bla bla bla ...",
+    },
+    {
+      name: "Touro",
+      text: "bla bla bla ...",
+    },
+    // ... same for others
+  ],
     
   // JSON Service specific
   result: {} // A JSON object containg the service result
