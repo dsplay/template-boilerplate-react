@@ -20,7 +20,7 @@ npm start
 
 That's where the magic happens.
 
-All DSPLAY HTML templates must have a file called `dsplay-data.js` in your template, located anywhere. This file must contain basically 3 variables, like this:
+All DSPLAY HTML template must have a file called `dsplay-data.js`, located anywhere. This file must contain 3 variables, like this:
 
 ```js
 var dsplay_media = {
