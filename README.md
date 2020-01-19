@@ -2,6 +2,8 @@
 
 You can use this project as a skeleton for creating a new HTML-based template for [DSPLAY](https://dsplay.tv).
 
+> This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
 ## Getting started
 
 ```
@@ -14,13 +16,33 @@ npm start
 
 ## Basics
 
-> This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Structure and `index.html`
+
+All DSPLAY templates are just simple HTML projects. The only requirement regarding the project structure is that you must have a `index.html` in the root of your project, and a file called `dsplay-data.js` located anywhere. The rest of the structure is up to you.
+
+A sample project structure can be something like:
+
+```
+/my-template
+  index.html
+  /scripts
+    dsplay-data.js
+  /images
+  /stules
+```
+
+## Packing
+
+To upload your template to the [DSPLAY Web Manager](https://manager.dsplay.tv) you must packing all your files in a `.zip` file.
+
+> **IMPORTANT:** When zipping your template, the `index.html` file must be located in the root of the `.zip` file, not inside any folder.
+
 
 ## `dsplay-data.js`
 
 That's where the magic happens.
 
-All DSPLAY HTML template must have a file called `dsplay-data.js`, located anywhere. This file must contain 3 variables, like this:
+All DSPLAY HTML template must have a file called `dsplay-data.js`, located anywhere and "imported" in your `index.html`. This file must contain 3 variables, like this:
 
 ```js
 var dsplay_media = {
