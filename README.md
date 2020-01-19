@@ -18,7 +18,7 @@ npm start
 
 ## Structure and `index.html`
 
-All DSPLAY templates are just simple HTML projects. The only requirement regarding the project structure is that you must have a `index.html` in the root of your project, and a file called `dsplay-data.js` located anywhere. The rest of the structure is up to you.
+All DSPLAY templates are just simple HTML projects. The only requirement regarding the project structure is that you must have an `index.html` in the root of your project, and a file called `dsplay-data.js` located anywhere in the project folder. The rest of the structure is up to you.
 
 A sample project structure can be something like:
 
