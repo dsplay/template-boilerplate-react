@@ -33,7 +33,7 @@ A sample project structure can be something like:
 
 ## Packing
 
-To upload your template to the [DSPLAY Web Manager](https://manager.dsplay.tv) you must packing all your files in a `.zip` file.
+To upload your template to the [DSPLAY Web Manager](https://manager.dsplay.tv) you must pack all your files in a `.zip` file.
 
 > **IMPORTANT:** When zipping your template, the `index.html` file must be located in the root of the `.zip` file, not inside any folder.
 
