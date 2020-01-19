@@ -28,7 +28,7 @@ A sample project structure can be something like:
   /scripts
     dsplay-data.js
   /images
-  /stules
+  /styles
 ```
 
 ## Packing
