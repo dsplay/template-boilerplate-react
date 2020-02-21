@@ -24,25 +24,19 @@ function App() {
             <h2>Raw Values</h2>
             <div>
                 <p>
-                    Media:
-                    <pre>{JSON.stringify(media, null, 4)}</pre>
-                </p>
-                <p>
                     Config:
                     <pre>{JSON.stringify(config, null, 4)}</pre>
+                </p>
+                <p>
+                    Media:
+                    <pre>{JSON.stringify(media, null, 4)}</pre>
                 </p>
                 <p>
                     Template:
                     <pre>{JSON.stringify(template, null, 4)}</pre>
                 </p>
             </div>
-            <h2>Media Values Examples</h2>
-            <div>
-                <p>
-                    Duration:
-                    <span class="val">{duration}</span>
-                </p>
-            </div>
+
             <h2>Configuration Values Examples</h2>
             <div>
                 <p>
@@ -52,6 +46,13 @@ function App() {
                 <p>
                     Locale:
                     <span class="val">{locale}</span>
+                </p>
+            </div>
+            <h2>Media Values Examples</h2>
+            <div>
+                <p>
+                    Duration:
+                    <span class="val">{duration}</span>
                 </p>
             </div>
             <h2>Custom Template Var Examples</h2>
