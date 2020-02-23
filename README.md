@@ -127,6 +127,8 @@ To create a release build of the template, ready to be uploaded to DSPLAY, just 
 npm run zip
 ```
 
+It will generate a `template.zip` file ready to be deployed to [DSPLAY Web Manager](https://manager.dsplay.tv/template/create)
+
 ## More
 
 The see more about DSPLAY HTML Templates, visit: https://developers.dsplay.tv/docs/html-templates
