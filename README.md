@@ -57,18 +57,14 @@ function App() {
             <h1>DSPLAY Template</h1>
             <h2>Raw Values</h2>
             <div>
-                <p>
-                    Config:
-                    <pre>{JSON.stringify(config, null, 4)}</pre>
-                </p>
-                <p>
-                    Media:
-                    <pre>{JSON.stringify(media, null, 4)}</pre>
-                </p>
-                <p>
-                    Template:
-                    <pre>{JSON.stringify(template, null, 4)}</pre>
-                </p>
+                <p>Config:</p>
+                <pre>{JSON.stringify(config, null, 4)}</pre>
+
+                <p>Media:</p>
+                <pre>{JSON.stringify(media, null, 4)}</pre>
+
+                <p>Template:</p>
+                <pre>{JSON.stringify(template, null, 4)}</pre>
             </div>
             <h2>Configuration Values Examples</h2>
             <div>
