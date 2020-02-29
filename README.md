@@ -32,6 +32,7 @@ The easiest way to access `dsplay-data.js` values in your project is by using th
 Here is a small snippet showing how to get values inside a React component:
 
 ```jsx
+// App.jsx
 import React from 'react';
 import {
     // values
@@ -114,6 +115,22 @@ function App() {
 
 export default App;
 ```
+
+## Test assets
+
+To use test assets (images, videos, etc) during development time you can put them in the `public/test-assets` folder and then reference them in `dsplay-data.js` using its relative path.
+```js
+// dsplay-data.js
+
+// ... other objects
+
+var dsplay_template {
+    //... other fields
+    my_image: '../test-assets/my-image.png',
+}
+```
+
+> The `public/test-assets` folder is automatically excluded from the release build.
 
 ## Packing (release build)
 

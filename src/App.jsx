@@ -70,6 +70,10 @@ function App() {
                     <span className="val">{tfval('rate', .75)}</span>
                 </p>
                 <p>
+                    Image:
+                    <img className="val" src={tval('logo')} />
+                </p>
+                <p>
                     Vertical?:
                     <span className="val">{isVertical ? 'Yes' : 'No'}</span>
                 </p>
