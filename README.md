@@ -118,7 +118,7 @@ export default App;
 
 ## Test assets
 
-To use test assets (images, videos, etc) during development time you can put them in the `public/test-assets` folder and then reference them in `dsplay-data.js` using its relative path.
+To use test assets (images, videos, etc) during development time you can put them in the `public/test-assets` folder and then reference them in `dsplay-data.js` using their relative path.
 ```js
 // dsplay-data.js
 
