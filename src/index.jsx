@@ -1,11 +1,10 @@
-import "core-js/features/set";
-import "core-js/features/map";
-import "core-js/features/object";
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.sass';
-import App from './App';
+import App from './app';
 import registerServiceWorker from './registerServiceWorker';
+import './index.sass';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
