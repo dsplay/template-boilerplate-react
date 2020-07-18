@@ -68,7 +68,7 @@ function Main() {
         </p>
         <p>
           Double:
-          <span className="val">{tfval('rate', .75)}</span>
+          <span className="val">{tfval('rate', 0.75)}</span>
         </p>
         <p>
           Image:
@@ -82,11 +82,17 @@ function Main() {
       <h2>Fit Text Example</h2>
       <div>
         <p>Short Text in box:</p>
-        <div style={{ border: '1px solid white', padding: '1em', width: '80%', height: '10em' }}>
+        <div style={{
+          border: '1px solid white', padding: '1em', width: '80%', height: '10em',
+        }}
+        >
           <FitText>Small</FitText>
         </div>
         <p>Long Text in box:</p>
-        <div style={{ border: '1px solid white', padding: '1em', width: '80%', height: '10em' }}>
+        <div style={{
+          border: '1px solid white', padding: '1em', width: '80%', height: '10em',
+        }}
+        >
           <FitText style={{ textAlign: 'center' }}>Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text </FitText>
         </div>
       </div>

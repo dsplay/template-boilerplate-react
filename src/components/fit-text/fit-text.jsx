@@ -20,9 +20,10 @@ const FitText = ({
   return (
     <div
       ref={ref}
-      style={finalStyle}>
+      style={finalStyle}
+    >
       {/* <p> */}
-        {children}
+      {children}
       {/* </p> */}
     </div>
   );
