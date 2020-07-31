@@ -1,58 +1,61 @@
-import React, { useMemo } from 'react';
-import './loader.sass';
-import spinner from '../../images/loader.gif';
-import {
-  LANDSCAPE, PORTRAIT, SQUARED, BANNER_H, BANNER_V,
-} from '../../util/screen';
-import { useScreenInfo } from '../../hooks/use-screen-info';
+import React, { useState, useEffect, useCallback } from 'react';
+import ImageLoader from '../image-loader/image-loader';
+import FontLoader from '../font-loader/font-loader';
+import { wait } from '../../util/time';
 
-// component
-
-const Loader = (props) => {
-  const {
-    w, h, screenFormat,
-  } = useScreenInfo();
-
-  const spinnerDimension = useMemo(() => {
-    let dimension = Math.min(w, h) / 8;
-
-    switch (screenFormat) {
-      case LANDSCAPE:
-        break;
-      case PORTRAIT:
-        break;
-      case SQUARED:
-        break;
-      case BANNER_H:
-      case BANNER_V:
-        dimension = Math.min(w, h) / 2;
-        break;
-      default:
-        break;
-    }
-
-    return dimension;
-  }, [w, h, screenFormat]);
-
-  const imageStyle = {
-    width: `${spinnerDimension}px`,
-    height: `${spinnerDimension}px`,
-  };
-
-  const { className } = props;
-
-  return (
-    <div {...props} className={`loader ${className || ''}`}>
-      <div>
-        <img src={spinner} alt="" style={imageStyle} />
-      </div>
-      <div className="hidden">
-        {/* put your fonts here */}
-        <div style={{ fontFamily: 'Oswald' }}>-</div>
-        <div style={{ fontFamily: 'Roboto Condensed' }}>-</div>
-      </div>
-    </div>
-  );
+const style = {
+  position: 'absolute',
+  width: '100vw',
+  height: '100vh',
+  margin: 0,
+  // backgroundColor: 'purple',
 };
+
+function Loader({
+  fontFamilies,
+  images,
+  placeholder = <div>loading...</div>,
+  children,
+  minLoadingTime = 0,
+  tasks = [],
+}) {
+  const [loadingMin, setLoadingMin] = useState(true);
+  const [loadingFonts, setLoadingFonts] = useState(true);
+  const [loadingImages, setLoadingImages] = useState(true);
+
+  const handleImagesLoad = useCallback(() => {
+    setLoadingImages(false);
+  }, []);
+
+  const handleFontsLoad = useCallback(() => {
+    setLoadingFonts(false);
+  }, []);
+
+  useEffect(() => {
+    if (loadingMin) {
+      (async () => {
+        await Promise.all([
+          wait(minLoadingTime),
+          ...tasks,
+        ]);
+        setLoadingMin(false);
+        // console.log('min loading time passed', loadingMin, minLoadingTime, tasks);
+      })();
+    }
+  }, [loadingMin, minLoadingTime, tasks]);
+
+  if (loadingFonts || loadingImages || loadingMin) {
+    // console.log('loading...');
+    return (
+      <div style={style}>
+        {placeholder}
+        <ImageLoader images={images} onLoad={handleImagesLoad} />
+        <FontLoader families={fontFamilies} onLoad={handleFontsLoad} />
+      </div>
+    );
+  }
+
+  return children;
+}
 
 export default Loader;

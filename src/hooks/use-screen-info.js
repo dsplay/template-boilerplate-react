@@ -7,24 +7,19 @@ export function useScreenInfo() {
   const [state, setState] = useState(calculateScreenInfo());
 
   useEffect(() => {
-    let listener;
-    let timeout;
+    let timeout = null;
 
-    if (window) {
-      listener = window.addEventListener('resize', () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          setState(calculateScreenInfo());
-        }, 250);
-      });
-    }
-
-    return () => {
-      if (window) {
-        if (listener) window.removeEventListener('resize', listener);
-        clearTimeout(timeout);
-      }
+    const resizeListener = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        // console.log('setting state..');
+        setState(calculateScreenInfo());
+      }, 250);
     };
+
+    window.addEventListener('resize', resizeListener);
+
+    return () => window.removeEventListener('resize', resizeListener);
   }, []);
 
   return state;

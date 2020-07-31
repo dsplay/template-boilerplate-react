@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFitText from 'use-fit-text';
 
 const FitText = ({
   children,
   style = {},
+  readyClassName = '',
 }) => {
-  const { fontSize, ref } = useFitText({ maxFontSize: 10000 });
+  const [ready, setReady] = useState(false);
+  const { fontSize, ref } = useFitText({ maxFontSize: 10000, onFinish: () => setReady(true) });
 
   const finalStyle = {
     height: '100%',
@@ -13,6 +15,8 @@ const FitText = ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    visibility: ready ? 'visible' : 'hidden',
+    className = '',
     ...style,
     fontSize,
   };
@@ -20,11 +24,10 @@ const FitText = ({
   return (
     <div
       ref={ref}
+      className={`${className} ${ready ? readyClassName : ''}`}
       style={finalStyle}
     >
-      {/* <p> */}
       {children}
-      {/* </p> */}
     </div>
   );
 };
