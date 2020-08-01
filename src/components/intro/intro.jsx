@@ -1,9 +1,6 @@
 import React, { useMemo } from 'react';
-import { useScreenInfo } from '@dsplay/react-template-utils';
+import { useScreenInfo, screen } from '@dsplay/react-template-utils';
 import spinner from '../../images/loader.gif';
-import {
-  LANDSCAPE, PORTRAIT, SQUARED, BANNER_H, BANNER_V,
-} from '../../util/screen';
 import './intro.sass';
 
 // component
@@ -17,14 +14,14 @@ const Intro = (props) => {
     let dimension = Math.min(w, h) / 8;
 
     switch (screenFormat) {
-      case LANDSCAPE:
+      case screen.LANDSCAPE:
         break;
-      case PORTRAIT:
+      case screen.PORTRAIT:
         break;
-      case SQUARED:
+      case screen.SQUARE:
         break;
-      case BANNER_H:
-      case BANNER_V:
+      case screen.BANNER_H:
+      case screen.BANNER_V:
         dimension = Math.min(w, h) / 2;
         break;
       default:
