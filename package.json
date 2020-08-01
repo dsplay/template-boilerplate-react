@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@dsplay/template-utils": "^1.1.8",
+    "@dsplay/react-template-utils": "^1.4.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
-    "use-fit-text": "^2.3.0"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

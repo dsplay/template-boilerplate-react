@@ -1,10 +1,13 @@
 import React from 'react';
+import { Loader, useScreenInfo } from '@dsplay/react-template-utils';
 import { tval } from '@dsplay/template-utils';
 import Intro from './components/intro/intro';
-import Loader from './components/loader/loader';
 import Main from './components/main/main';
-import { useScreenInfo } from './hooks/use-screen-info';
 import './app.sass';
+
+
+// console.log(U, Loader)
+
 
 const MIN_LOADING_DURATION = 2000;
 const logo = tval('logo');

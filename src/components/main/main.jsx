@@ -1,37 +1,41 @@
 import React from 'react';
 import {
-  // values
-  media, // current media
-  config, // player configuration
-  template, // custom template values
-  // utility functions
-  tval, // custom template string value
-  tbval, // custom template boolean value
-  tival, // custom template int value
-  tfval, // custom template float value
-  isVertical, // boolean flag to indicate screen orientation
-
-} from '@dsplay/template-utils';
+  FitText,
+  useMedia,
+  useConfig,
+  useTemplate,
+  useTemplateVal,
+  useTemplateBooleanVal,
+  useTemplateIntVal,
+  useTemplateFloatVal,
+  useScreenInfo,
+} from '@dsplay/react-template-utils';
 import './main.sass';
-import FitText from '../fit-text/fit-text';
 
-const { duration } = media;
-const { orientation, locale } = config;
 
 function Main() {
+
+  const cfg = useConfig();
+  const md = useMedia();
+  const tpl = useTemplate();
+  const { screenFormat } = useScreenInfo();
+
+  const { orientation, locale } = cfg;
+  const { duration } = md;
+
   return (
     <div className="main">
       <h1>DSPLAY Template</h1>
       <h2>Raw Values</h2>
       <div>
         <p>Config:</p>
-        <pre>{JSON.stringify(config, null, 4)}</pre>
+        <pre>{JSON.stringify(cfg, null, 4)}</pre>
 
         <p>Media:</p>
-        <pre>{JSON.stringify(media, null, 4)}</pre>
+        <pre>{JSON.stringify(md, null, 4)}</pre>
 
         <p>Template:</p>
-        <pre>{JSON.stringify(template, null, 4)}</pre>
+        <pre>{JSON.stringify(tpl, null, 4)}</pre>
       </div>
 
       <h2>Configuration Values Examples</h2>
@@ -56,27 +60,27 @@ function Main() {
       <div>
         <p>
           String:
-          <span className="val">{tval('title', 'Default Value')}</span>
+          <span className="val">{useTemplateVal('title', 'Default Value')}</span>
         </p>
         <p>
           Boolean:
-          <span className="val">{tbval('expanded', true) ? 'Yes' : 'No'}</span>
+          <span className="val">{useTemplateBooleanVal('expanded', true) ? 'Yes' : 'No'}</span>
         </p>
         <p>
           Int:
-          <span className="val">{tival('page_size', 10)}</span>
+          <span className="val">{useTemplateIntVal('page_size', 10)}</span>
         </p>
         <p>
           Double:
-          <span className="val">{tfval('rate', 0.75)}</span>
+          <span className="val">{useTemplateFloatVal('rate', 0.75)}</span>
         </p>
         <p>
           Image:
-          <img className="val" alt="" src={tval('logo')} />
+          <img className="val" alt="" src={useTemplateVal('logo')} />
         </p>
         <p>
-          Vertical?:
-          <span className="val">{isVertical ? 'Yes' : 'No'}</span>
+          ScreenFormat:
+          <span className="val">{screenFormat}</span>
         </p>
       </div>
       <h2>Fit Text Example</h2>

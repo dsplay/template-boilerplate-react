@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
+import { useScreenInfo } from '@dsplay/react-template-utils';
 import spinner from '../../images/loader.gif';
 import {
   LANDSCAPE, PORTRAIT, SQUARED, BANNER_H, BANNER_V,
 } from '../../util/screen';
-import { useScreenInfo } from '../../hooks/use-screen-info';
 import './intro.sass';
 
 // component
 
-const Loader = (props) => {
+const Intro = (props) => {
   const {
     w, h, screenFormat,
   } = useScreenInfo();
@@ -50,4 +50,4 @@ const Loader = (props) => {
   );
 };
 
-export default Loader;
+export default Intro;
