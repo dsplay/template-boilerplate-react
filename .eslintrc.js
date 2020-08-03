@@ -29,7 +29,7 @@ module.exports = {
       },
     ],
     'no-unused-vars': ['error', { 'args': 'none' }],
-    'react/jsx-props-no-spreading': ['error', { "html": "ignore", "exceptions": ["MyCustomComponent", "img"] }],
+    'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
   },
 };

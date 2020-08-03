@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   FitText,
   useMedia,
@@ -12,9 +13,7 @@ import {
 } from '@dsplay/react-template-utils';
 import './main.sass';
 
-
 function Main() {
-
   const cfg = useConfig();
   const md = useMedia();
   const tpl = useTemplate();
@@ -23,25 +22,39 @@ function Main() {
   const { orientation, locale } = cfg;
   const { duration } = md;
 
+  const { t, i18n } = useTranslation();
+
+  i18n.changeLanguage(locale);
+
   return (
     <div className="main">
       <h1>DSPLAY Template</h1>
       <h2>Raw Values</h2>
       <div>
-        <p>Config:</p>
+        <p>
+          {t('Config')}
+          :
+        </p>
         <pre>{JSON.stringify(cfg, null, 4)}</pre>
 
-        <p>Media:</p>
+        <p>
+          {t('Media')}
+          :
+        </p>
         <pre>{JSON.stringify(md, null, 4)}</pre>
 
-        <p>Template:</p>
+        <p>
+          {t('Template')}
+          :
+        </p>
         <pre>{JSON.stringify(tpl, null, 4)}</pre>
       </div>
 
       <h2>Configuration Values Examples</h2>
       <div>
         <p>
-          Orientation:
+          {t('Orientation')}
+          :
           <span className="val">{orientation}</span>
         </p>
         <p>
