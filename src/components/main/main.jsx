@@ -5,7 +5,7 @@ import {
   useConfig,
   useTemplate,
   useTemplateVal,
-  useTemplateBooleanVal,
+  useTemplateBoolVal,
   useTemplateIntVal,
   useTemplateFloatVal,
   useScreenInfo,
@@ -64,7 +64,7 @@ function Main() {
         </p>
         <p>
           Boolean:
-          <span className="val">{useTemplateBooleanVal('expanded', true) ? 'Yes' : 'No'}</span>
+          <span className="val">{useTemplateBoolVal('expanded', true) ? 'Yes' : 'No'}</span>
         </p>
         <p>
           Int:

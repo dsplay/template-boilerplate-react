@@ -1,6 +1,5 @@
-import React from 'react';
-import { Loader, useScreenInfo } from '@dsplay/react-template-utils';
-import { tval } from '@dsplay/template-utils';
+import React, { useMemo } from 'react';
+import { Loader, useScreenInfo, useTemplateVal } from '@dsplay/react-template-utils';
 import Intro from './components/intro/intro';
 import Main from './components/main/main';
 import './app.sass';
@@ -10,7 +9,6 @@ import './app.sass';
 
 
 const MIN_LOADING_DURATION = 2000;
-const logo = tval('logo');
 
 // fonts to preload
 // @font-face's must be defined in fonts.sass or other in-use style file
@@ -19,16 +17,15 @@ const fonts = [
   'Oswald',
 ];
 
-// images to preload
-const images = [
-  logo,
-];
-
 // other tasks (Promises) to run during template intro
 const tasks = [];
 
 function App() {
   const { screenFormat } = useScreenInfo();
+  const logo = useTemplateVal('logo');
+
+  // images to preload
+  const images = useMemo(() => [logo], [logo]);
 
   return (
     <Loader
