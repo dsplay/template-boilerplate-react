@@ -11,8 +11,13 @@ import './app.sass';
 const MIN_LOADING_DURATION = 2000;
 
 // fonts to preload
-// @font-face's must be defined in fonts.sass or other in-use style file
+// @font-face's must be defined in fonts.sass or another in-use style file
 const fonts = [
+  'Roboto Thin',
+  'Roboto Light',
+  'Roboto Regular',
+  'Roboto Medium',
+  'Roboto Bold',
   'Roboto Condensed',
   'Oswald',
 ];
