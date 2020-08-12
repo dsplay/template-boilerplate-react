@@ -3,15 +3,15 @@
   "version": "2.1.0",
   "private": true,
   "dependencies": {
-    "@dsplay/react-template-utils": "^2.0.0",
+    "@dsplay/react-template-utils": "^2.0.2",
     "i18next": "^19.6.3",
-    "i18next-browser-languagedetector": "^5.0.0",
+    "i18next-browser-languagedetector": "^5.0.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.7.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
