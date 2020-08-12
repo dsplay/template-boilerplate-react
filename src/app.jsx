@@ -35,11 +35,10 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <Loader
-
         placeholder={<Intro />}
-        fontFamilies={fonts}
+        fonts={fonts}
         images={images}
-        minLoadingTime={MIN_LOADING_DURATION}
+        minDuration={MIN_LOADING_DURATION}
         tasks={tasks}
       >
         <div className={`app fade-in ${screenFormat}`}>

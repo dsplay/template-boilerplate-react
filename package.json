@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "private": true,
   "dependencies": {
-    "@dsplay/react-template-utils": "^2.0.2",
+    "@dsplay/react-template-utils": "^3.0.0",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^5.0.1",
     "node-sass": "^4.14.1",
