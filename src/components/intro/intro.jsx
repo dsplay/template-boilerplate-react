@@ -5,7 +5,7 @@ import './intro.sass';
 
 // component
 
-const Intro = (props) => {
+function Intro(props) {
   const {
     w, h, screenFormat,
   } = useScreenInfo();
@@ -45,6 +45,6 @@ const Intro = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Intro;

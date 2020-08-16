@@ -14,13 +14,13 @@ import {
 import './main.sass';
 
 function Main() {
-  const cfg = useConfig();
-  const md = useMedia();
-  const tpl = useTemplate();
+  const config = useConfig();
+  const media = useMedia();
+  const template = useTemplate();
   const { screenFormat } = useScreenInfo();
 
-  const { orientation, locale } = cfg;
-  const { duration } = md;
+  const { locale } = config;
+  const { duration } = media;
 
   const { t, i18n } = useTranslation();
 
@@ -35,28 +35,23 @@ function Main() {
           {t('Config')}
           :
         </p>
-        <pre>{JSON.stringify(cfg, null, 4)}</pre>
+        <pre>{JSON.stringify(config, null, 4)}</pre>
 
         <p>
           {t('Media')}
           :
         </p>
-        <pre>{JSON.stringify(md, null, 4)}</pre>
+        <pre>{JSON.stringify(media, null, 4)}</pre>
 
         <p>
           {t('Template')}
           :
         </p>
-        <pre>{JSON.stringify(tpl, null, 4)}</pre>
+        <pre>{JSON.stringify(template, null, 4)}</pre>
       </div>
 
       <h2>Configuration Values Examples</h2>
       <div>
-        <p>
-          {t('Orientation')}
-          :
-          <span className="val">{orientation}</span>
-        </p>
         <p>
           Locale:
           <span className="val">{locale}</span>
