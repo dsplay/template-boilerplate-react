@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  LoaderContext,
   FitText,
   useMedia,
   useConfig,
@@ -18,6 +19,7 @@ function Main() {
   const media = useMedia();
   const template = useTemplate();
   const { screenFormat } = useScreenInfo();
+  const context = useContext(LoaderContext);
 
   const { locale } = config;
   const { duration } = media;
@@ -31,6 +33,11 @@ function Main() {
       <h1>DSPLAY Template</h1>
       <h2>Raw Values</h2>
       <div>
+        <p>
+          {t('Context')}
+          :
+        </p>
+        <pre>{JSON.stringify(context, null, 4)}</pre>
         <p>
           {t('Config')}
           :

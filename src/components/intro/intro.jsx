@@ -2,14 +2,10 @@ import React, { useMemo } from 'react';
 import { useScreenInfo, screen } from '@dsplay/react-template-utils';
 import spinner from '../../images/loader.gif';
 import './intro.sass';
-const  utils = require('@dsplay/react-template-utils/dist/dsplay-react-template-utils.commonjs2');
 
 // component
 
 function Intro(props) {
-
-  console.log('utils', utils);
-
   const {
     w, h, screenFormat,
   } = useScreenInfo();
