@@ -3,14 +3,14 @@
   "version": "2.1.0",
   "private": true,
   "dependencies": {
-    "@dsplay/react-template-utils": "^3.2.0",
-    "i18next": "^20.1.0",
-    "i18next-browser-languagedetector": "^6.1.0",
+    "@dsplay/react-template-utils": "^3.2.1",
+    "i18next": "^20.6.1",
+    "i18next-browser-languagedetector": "^6.1.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
-    "react-i18next": "^11.8.12",
+    "react-i18next": "^11.15.2",
     "react-scripts": "^4.0.3"
   },
   "scripts": {
@@ -35,8 +35,8 @@
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.23.1"
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0"
   }
 }
