@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   LoaderContext,
   FitText,
+  QrCode,
   useMedia,
   useConfig,
   useTemplate,
@@ -115,7 +116,16 @@ function Main() {
           <FitText style={{ textAlign: 'center' }}>Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text Very Long Text </FitText>
         </div>
       </div>
+      <h2>QR Code Example</h2>
+      <div>
+        <QrCode
+          options={{
+            text: 'abcdef',
+          }}
+        />
+      </div>
     </div>
+
   );
 }
 
