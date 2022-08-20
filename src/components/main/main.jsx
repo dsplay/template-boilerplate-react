@@ -39,11 +39,6 @@ function Main() {
           :
         </p>
         <pre>{JSON.stringify(context, null, 4)}</pre>
-        <p>
-          {t('Config')}
-          :
-        </p>
-        <pre>{JSON.stringify(config, null, 4)}</pre>
 
         <p>
           {t('Media')}
@@ -56,6 +51,12 @@ function Main() {
           :
         </p>
         <pre>{JSON.stringify(template, null, 4)}</pre>
+
+        <p>
+          {t('Config')}
+          :
+        </p>
+        <pre>{JSON.stringify(config, null, 4)}</pre>
       </div>
 
       <h2>Configuration Values Examples</h2>
