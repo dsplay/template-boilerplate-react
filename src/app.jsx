@@ -23,7 +23,9 @@ const fonts = [
 ];
 
 // other tasks (Promises) to run during template intro
-const tasks = [];
+const tasks = [
+  Promise.resolve('my promise result'),
+];
 
 function App() {
   const { screenFormat } = useScreenInfo();
