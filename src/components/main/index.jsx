@@ -13,7 +13,7 @@ import {
   useTemplateFloatVal,
   useScreenInfo,
 } from '@dsplay/react-template-utils';
-import './main.sass';
+import './style.sass';
 
 function Main() {
   const config = useConfig();
