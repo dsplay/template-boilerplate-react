@@ -13,7 +13,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  parser: "babel-eslint",
+  parser: '@babel/eslint-parser',
 
   plugins: [
     'jsx-a11y',
@@ -31,5 +31,7 @@ module.exports = {
     'no-unused-vars': ['error', { 'args': 'none' }],
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };

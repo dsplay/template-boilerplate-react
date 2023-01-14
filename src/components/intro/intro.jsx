@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useScreenInfo, screen } from '@dsplay/react-template-utils';
 import spinner from '../../images/loader.gif';
 import './intro.sass';

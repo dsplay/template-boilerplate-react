@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Loader, useScreenInfo, useTemplateVal } from '@dsplay/react-template-utils';
 import Intro from './components/intro/intro';
