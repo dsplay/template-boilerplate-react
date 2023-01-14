@@ -1,6 +1,6 @@
 {
   "name": "dsplay-template-react-boilerplate",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
     "@dsplay/react-template-utils": "^4.0.0",
