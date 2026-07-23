@@ -6,7 +6,7 @@ This is a [React](https://reactjs.org/) boilerplate for building [HTML-based tem
 
 You can use this project as a skeleton for creating a new HTML Template with React. If you prefer to use another JS library, check the [other boilerplates](https://developers.dsplay.tv/docs/html-templates/boilerplates/) available.
 
-> This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+> This project is built with [Vite](https://vitejs.dev/) and requires Node.js 20.19+ or 22.12+ (see `.nvmrc`).
 
 ## Getting started
 
