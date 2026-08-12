@@ -1,6 +1,9 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+// i18next's default export is the same instance whose methods (use/init/...) are
+// individually re-exported by name, so this is a known false positive.
+// eslint-disable-next-line import/no-named-as-default-member
 i18n
   .use(LanguageDetector)
   .init({
