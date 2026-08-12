@@ -31,6 +31,11 @@ build.sh                    <-- zips the Vite build output into template.zip
 - **Every component gets its own folder with an `index.jsx`.** For a simple component, `index.jsx` *is* the component. For a component that grows into several files (hooks, sub-components, helpers), `index.jsx` becomes a barrel that re-exports the folder's public API — internal files stay internal, not imported directly from outside the folder.
 - **Always import a component by its folder, never by reaching into `index`** — `import Main from './main'`, never `import Main from './main/index'` or `.../main/index.jsx`. Same for barrels: consumers import from the folder, not from whichever internal file happens to implement the piece they want.
 
+## Package identity
+
+- Rename `package.json`'s `"name"` away from `dsplay-template-react-boilerplate` immediately when starting a new template from this boilerplate — it must identify the template itself, not the boilerplate it was cloned from. Convention: `dsplay-` + this repo's own GitHub name (e.g. the `template-alerts` repo → `dsplay-template-alerts`).
+- This is easy to forget since `rm -rf .git && git init` (the very next step in README.md) doesn't touch `package.json` at all — check it explicitly. Several already-migrated templates shipped with the boilerplate's own name still in place until this was caught and fixed.
+
 ## README structure
 
 Every DSPLAY template's `README.md` follows the same skeleton (this repo's is the reference copy — most sections below aren't applicable to a generic boilerplate, only to an actual template):
