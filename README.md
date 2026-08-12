@@ -6,7 +6,7 @@ This is a [React](https://reactjs.org/) boilerplate for building [HTML-based tem
 
 You can use this project as a skeleton for creating a new HTML Template with React. If you prefer to use another JS library, check the [other boilerplates](https://developers.dsplay.tv/docs/html-templates/boilerplates/) available.
 
-> This project is built with [Vite](https://vitejs.dev/) and requires Node.js 20.19+ or 22.12+ (see `.nvmrc`).
+> This project is built with [Vite](https://vitejs.dev/) and requires Node.js 22.22.2+, 24.15.0+, or 26+ (see `.nvmrc`).
 
 This README has two audiences:
 - **[Building your own template](#building-your-own-template)** — if you cloned this repo to create a new DSPLAY template.

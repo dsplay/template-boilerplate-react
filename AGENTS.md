@@ -4,7 +4,7 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## What this project is
 
-A React boilerplate for building [HTML-based templates](https://developers.dsplay.tv/docs/html-templates) for the [DSPLAY - Digital Signage](https://dsplay.tv/) platform, built with [Vite](https://vitejs.dev/). Requires Node.js 20.19+ or 22.12+ (see `.nvmrc`).
+A React boilerplate for building [HTML-based templates](https://developers.dsplay.tv/docs/html-templates) for the [DSPLAY - Digital Signage](https://dsplay.tv/) platform, built with [Vite](https://vitejs.dev/). Requires Node.js 22.22.2+, 24.15.0+, or 26+ (see `.nvmrc`) — raised from 20.19+/22.12+ to satisfy `jsdom@30`'s engine requirement.
 
 Most people who touch this repo are building their **own** template by cloning it, customizing `src/components/`, and never pushing back here — they diverge immediately (README.md tells them to `rm -rf .git && git init` right after cloning). The README's "Maintaining this boilerplate" section (dependency updates, this AGENTS.md) is only relevant to the DSPLAY team keeping *this* repo current for the next person who clones it.
 
