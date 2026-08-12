@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import legacy from '@vitejs/plugin-legacy';
 import pkg from './package.json' with { type: 'json' };
+import templateManifest from '@dsplay/template-manifest/vite-plugin';
 
 export default defineConfig({
   base: './',
@@ -11,6 +12,7 @@ export default defineConfig({
     legacy({
       targets: pkg.browserslist,
     }),
+    templateManifest(),
   ],
   css: {
     preprocessorOptions: {
