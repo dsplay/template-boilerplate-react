@@ -1,0 +1,29 @@
+{
+  "variables": [
+    {
+      "key": "logo",
+      "type": "string",
+      "subtypeGuess": "image"
+    },
+    {
+      "key": "title",
+      "type": "string",
+      "default": "Default Value"
+    },
+    {
+      "key": "expanded",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "page_size",
+      "type": "integer",
+      "default": 10
+    },
+    {
+      "key": "rate",
+      "type": "float",
+      "default": 0.75
+    }
+  ]
+}

@@ -11,19 +11,56 @@ i18n
     resources: {
       en: {
         translations: {
-          Title: 'Title',
+          Context: 'Context',
+          Media: 'Media',
+          Template: 'Template',
+          Config: 'Config',
         },
       },
-      pt_br: {
+      pt: {
         translations: {
-          Title: 'Título',
-          Config: 'Configurações',
+          Context: 'Contexto',
           Media: 'Mídia',
-          Orientation: 'Orientação',
+          Template: 'Template',
+          Config: 'Configuração',
+        },
+      },
+      es: {
+        translations: {
+          Context: 'Contexto',
+          Media: 'Medio',
+          Template: 'Plantilla',
+          Config: 'Configuración',
+        },
+      },
+      it: {
+        translations: {
+          Context: 'Contesto',
+          Media: 'Media',
+          Template: 'Modello',
+          Config: 'Configurazione',
+        },
+      },
+      de: {
+        translations: {
+          Context: 'Kontext',
+          Media: 'Medien',
+          Template: 'Vorlage',
+          Config: 'Konfiguration',
+        },
+      },
+      nl: {
+        translations: {
+          Context: 'Context',
+          Media: 'Media',
+          Template: 'Sjabloon',
+          Config: 'Configuratie',
         },
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: {
+      default: ['en'],
+    },
     debug: true,
 
     // have a common namespace used around the full app

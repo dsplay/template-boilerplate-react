@@ -27,7 +27,8 @@ function Main() {
 
   const { t, i18n } = useTranslation();
 
-  i18n.changeLanguage(locale);
+  const [lng] = locale.split('_');
+  i18n.changeLanguage(lng);
 
   return (
     <div className="main">

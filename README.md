@@ -99,6 +99,8 @@ export default Main;
 
 `useTemplateVal`/`useTemplateBoolVal`/`useTemplateIntVal`/`useTemplateFloatVal` read a `dsplay_template` variable as string/boolean/integer/float, with an optional default value used when the variable is unset. See `src/components/main/index.jsx` in this boilerplate for a working, up-to-date version of this example.
 
+> Once you've settled on your template's variables, document them in your own README (a `Key | Type | Default | Description` table) and remember to register them as Template Vars (same name and type) when configuring your template in the DSPLAY CMS.
+
 ### Test assets
 
 To use test assets (images, videos, etc) during development, put them in the `public/test-assets` folder and reference them in `dsplay-data.js` using their relative path:

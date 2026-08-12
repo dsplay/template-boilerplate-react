@@ -1,0 +1,22 @@
+{
+  "config": {
+    "locale": "pt_br",
+    "osVersion": 19,
+    "appVersion": 99
+  },
+  "media": {
+    "duration": 30000,
+    "result": {
+      "validity": "2018-08-13T18:22:55.238Z",
+      "showOutdated": true,
+      "data": {}
+    },
+    "customMediaParam": "value"
+  },
+  "template": {
+    "template_var": "My Template Var",
+    "logo": "../test-assets/dsplay-logo.png",
+    "title": "My Super Template",
+    "expanded": "false"
+  }
+}
