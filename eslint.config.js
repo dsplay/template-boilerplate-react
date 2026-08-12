@@ -3,6 +3,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
+import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 
 export default [
@@ -16,6 +17,7 @@ export default [
   {
     plugins: {
       'react-hooks': reactHooks,
+      unicorn,
     },
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
@@ -40,6 +42,8 @@ export default [
       'react/prop-types': 'off',
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
+      // every folder/file we author must be kebab-case - see AGENTS.md
+      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
     },
   },
 ];

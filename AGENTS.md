@@ -25,6 +25,12 @@ src/
 build.sh                    <-- zips the Vite build output into template.zip
 ```
 
+## File and folder naming
+
+- **kebab-case everywhere** in `src/` (and anywhere else in this repo we author ourselves) — folders, JS/JSX files, Sass files, test files. E.g. `setup-tests.js`, not `setupTests.js`. This does *not* apply to files whose name is a fixed convention from tooling (`package.json`, `README.md`, `vite.config.js`, `.nvmrc`, etc.) — only to files/folders we're free to name.
+- **Every component gets its own folder with an `index.jsx`.** For a simple component, `index.jsx` *is* the component. For a component that grows into several files (hooks, sub-components, helpers), `index.jsx` becomes a barrel that re-exports the folder's public API — internal files stay internal, not imported directly from outside the folder.
+- **Always import a component by its folder, never by reaching into `index`** — `import Main from './main'`, never `import Main from './main/index'` or `.../main/index.jsx`. Same for barrels: consumers import from the folder, not from whichever internal file happens to implement the piece they want.
+
 ## Runtime model
 
 - `public/dsplay-data.js` defines `dsplay_config`, `dsplay_media`, and `dsplay_template` mock globals used only in **development**. `build.sh` blanks its content in the production build — the DSPLAY Android app injects the real `window.DSPLAY.getData()` before any script runs.
@@ -46,6 +52,10 @@ build.sh                    <-- zips the Vite build output into template.zip
 ## Dependency management (boilerplate maintainers only)
 
 Regular npm dependencies, not vendored files — `npm outdated` / `npm update` for in-range bumps. For an out-of-range (typically major) bump, apply it deliberately and verify `npm start`, `npm run build`, and `npm test` still work before committing — this boilerplate is consumed by other templates, so treat major bumps of `@dsplay/react-template-utils` especially carefully.
+
+### Known pending bump: ESLint 9 -> 10
+
+`eslint`/`@eslint/js` are pinned to `^9.39.5` (latest is `10.x`). Bumping them currently fails on peer dependency conflicts: `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` haven't declared ESLint 10 support yet as of 2026-08-12 — they're still the actively-maintained canonical packages, not abandoned or superseded, just lagging behind the major. `eslint-plugin-react-hooks` already supports it. `eslint-plugin-unicorn` is pinned to `65.0.1` for the same reason (`66.0.0+` requires ESLint `>=10.4`) — re-check peer ranges periodically and bump all of them together once the laggards catch up. Don't force any of this with `--legacy-peer-deps`.
 
 ## Commit messages
 
