@@ -23,7 +23,7 @@ var dsplay_template = {
 
     template_var: "My Template Var",
 
-    logo: '../test-assets/dsplay-logo.png',
+    logo: 'https://developers.dsplay.tv/assets/images/dsplay-logo.png',
 
     title: "My Super Template",
     expanded: "false",
