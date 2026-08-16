@@ -37,7 +37,7 @@ In this boilerplate, `dsplay-data.js` is located at the `public` folder.
 
 ### Using template/media/config values in your template
 
-The easiest way to access `dsplay-data.js` values in your project is through `@dsplay/react-template-utils` (already included in this boilerplate).
+The easiest way to access `dsplay-data.js` values in your project is through [`@dsplay/react-template-utils`](https://github.com/dsplay/react-template-utils) (already included in this boilerplate).
 
 ```jsx
 // src/components/main/index.jsx
