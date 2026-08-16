@@ -101,6 +101,30 @@ export default Main;
 
 > Once you've settled on your template's variables, document them in your own README (a `Key | Type | Default | Description` table) and remember to register them as Template Vars (same name and type) when configuring your template in the DSPLAY CMS.
 
+### Running tasks during the intro (and handling failures)
+
+`Loader`'s `tasks` prop (see `src/components/app/index.jsx`) accepts an array of promises to await before the intro placeholder is dismissed — useful if your template needs to fetch some data before it can render anything meaningful. Their settled values are exposed via `LoaderContext` as `tasksResults`, in the same order.
+
+A rejected task doesn't block the others, and it won't leave the intro stuck forever either: it settles as `undefined` in `tasksResults` at that index, with the rejection reason exposed in parallel via `tasksErrors`. Check `tasksErrors` anywhere you'd otherwise assume a task's data loaded successfully:
+
+```jsx
+// src/components/main/index.jsx
+import { useContext } from 'react';
+import { LoaderContext } from '@dsplay/react-template-utils';
+
+function Main() {
+  const { tasksResults: [myData], tasksErrors: [myDataError] } = useContext(LoaderContext);
+
+  if (myDataError) {
+    return <p>Something went wrong loading the data.</p>; // real templates should use react-i18next's t() here
+  }
+
+  return <p>{myData}</p>;
+}
+```
+
+This boilerplate's own `src/components/app/index.jsx` and `src/components/main/index.jsx` include a small working example of a task that deliberately fails, for reference. See [`template-flight-information`](https://github.com/dsplay/template-flight-information) for a complete, production example built on this pattern (a translated error message shown only when there's truly no data to fall back on — not just on any single failed fetch).
+
 ### Test assets
 
 To use test assets (images, videos, etc) during development, put them in the `public/test-assets` folder and reference them in `dsplay-data.js` using their relative path:
