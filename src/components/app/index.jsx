@@ -22,9 +22,23 @@ const fonts = [
   'Oswald',
 ];
 
-// other tasks (Promises) to run during template intro
+// other tasks (Promises) to run during template intro - e.g. fetching data needed before the
+// template can render. A rejected task no longer leaves Loader stuck on the placeholder forever:
+// it settles as undefined in tasksResults at that same index, with the rejection reason exposed
+// via tasksErrors on LoaderContext. The second task below deliberately fails to demonstrate this -
+// see Main for how to read tasksErrors, and template-flight-information for a full example of an
+// error UI built on top of it.
+function createFailingExampleTask() {
+  const failingTask = Promise.reject(new Error('example task failure'));
+  // silences the "unhandled rejection" warning that'd otherwise fire before Loader's own
+  // Promise.allSettled gets a chance to observe this same promise's rejection below
+  failingTask.catch(() => {});
+  return failingTask;
+}
+
 const tasks = [
   Promise.resolve('my promise result'),
+  createFailingExampleTask(),
 ];
 
 function App() {

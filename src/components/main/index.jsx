@@ -60,6 +60,21 @@ function Main() {
         <pre>{JSON.stringify(config, null, 4)}</pre>
       </div>
 
+      <h2>{t('Task Error Handling Example')}</h2>
+      <div>
+        <p>
+          {t('Result')}
+          :
+          <span className="val">{String(context.tasksResults?.[1] ?? 'undefined')}</span>
+        </p>
+        <p>
+          {t('Error')}
+          :
+          <span className="val">{context.tasksErrors?.[1]?.message ?? t('None')}</span>
+        </p>
+        <p>{t('This task intentionally fails to demonstrate error handling')}</p>
+        <p>{t('See template-flight-information for a complete example')}</p>
+      </div>
       <h2>Configuration Values Examples</h2>
       <div>
         <p>
