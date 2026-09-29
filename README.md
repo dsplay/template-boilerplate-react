@@ -27,6 +27,8 @@ npm install
 npm start
 ```
 
+`npm install` is safe to run as-is: the project's [.npmrc](.npmrc) disables dependency install scripts (`ignore-scripts=true`) and only accepts package versions published at least 3 days ago (`min-release-age=3`). None of the current dependencies need a post-install build step, so no extra setup is required. If you add one that does, add a `setup` script to `package.json` that runs `npm install` followed by `npm rebuild <package>`, and document it here.
+
 You're now developing your own template, detached from this boilerplate's history — changes here don't get pushed back to `dsplay/template-boilerplate-react`.
 
 ### `dsplay-data.js`
@@ -160,14 +162,16 @@ This section is for the DSPLAY team, keeping this boilerplate itself current for
 
 ### Updating dependencies
 
+**Dependencies must always be pinned to an exact version** (never `^`, `~` or any other range) — this applies to your own template too. All dependency versions in `package.json` are **pinned** (no `^`/`~`; `.npmrc` sets `save-exact=true`, so `npm install <pkg>` pins automatically) to reduce supply chain risk. [Dependabot](.github/dependabot.yml) proposes updates weekly, waiting 3 days after a release (7 days for major versions) before opening a PR.
+
 Unlike the vanilla-js/jQuery boilerplates, dependencies here are regular npm packages, not vendored files — there's no custom script involved:
 
 ```sh
 npm outdated   # see what has newer versions available
-npm update     # bump within the ranges already declared in package.json
+npm install <pkg>@<version>   # bump a dependency (stays pinned)
 ```
 
-For a version that falls outside the declared range (typically a major bump, e.g. a new `@dsplay/react-template-utils` major), bump it deliberately in `package.json` and test the boilerplate still works (`npm start`, `npm run build`, `npm test`) before committing — major bumps may contain breaking changes and this boilerplate is consumed by other templates.
+Since versions are pinned, `npm update` does nothing; bump each package explicitly (or merge Dependabot's PRs). For a major bump (e.g. a new `@dsplay/react-template-utils` major), test the boilerplate still works (`npm start`, `npm run build`, `npm test`) before committing — major bumps may contain breaking changes and this boilerplate is consumed by other templates.
 
 ### Commit conventions
 

@@ -92,9 +92,16 @@ This same section (and the config it describes) should be carried into every new
 - `npm run linter` / `npm run linter:fix` — ESLint on `src`.
 - `npm run zip` — builds, then runs `build.sh` to produce `template.zip` ready for the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create). `build/` and `template.zip` are gitignored.
 
+## Supply chain hardening
+
+- `.npmrc` sets `ignore-scripts=true` (no dependency lifecycle scripts run on install), `min-release-age=3` (npm refuses versions younger than 3 days) and `save-exact=true`. Note the real npm option is `ignore-scripts` — `disable-scripts` doesn't exist.
+- **Dependencies must ALWAYS be pinned to an exact version** — never `^`, `~`, `>=`, `latest` or any other range, in `dependencies` and `devDependencies` alike. When adding or bumping a package, use `npm install <pkg>@<version>` (`save-exact=true` in `.npmrc` handles it) and check `package.json` afterwards; fix any range that slips in. `src/sanity.test.js` enforces this, plus `.npmrc` and Dependabot settings and the legacy-WebView invariants below.
+- `.github/dependabot.yml` uses a 3-day cooldown (7 days for majors).
+- Currently no dependency needs its install script (`@parcel/watcher`, `core-js`, `fsevents` have scripts, but only fallbacks/banners). If one ever does, add a `setup` script (`npm install && npm rebuild <pkg>`) and document it in README.md.
+
 ## Dependency management (boilerplate maintainers only)
 
-Regular npm dependencies, not vendored files — `npm outdated` / `npm update` for in-range bumps. For an out-of-range (typically major) bump, apply it deliberately and verify `npm start`, `npm run build`, and `npm test` still work before committing — this boilerplate is consumed by other templates, so treat major bumps of `@dsplay/react-template-utils` especially carefully.
+Regular npm dependencies, not vendored files — versions are pinned, so bump explicitly (`npm outdated`, then `npm install <pkg>@<version>`) or merge Dependabot PRs. For a major bump, apply it deliberately and verify `npm start`, `npm run build`, and `npm test` still work before committing — this boilerplate is consumed by other templates, so treat major bumps of `@dsplay/react-template-utils` especially carefully.
 
 ### Known pending bump: ESLint 9 -> 10
 
