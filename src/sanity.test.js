@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const read = (file) => readFileSync(resolve(process.cwd(), file), 'utf8');
+const read = (file) => readFileSync(resolve(import.meta.dirname, '..', file), 'utf8');
 const pkg = JSON.parse(read('package.json'));
 
 describe('supply chain hardening', () => {
@@ -19,7 +19,7 @@ describe('supply chain hardening', () => {
   });
 
   it('has a lockfile', () => {
-    expect(existsSync(resolve(process.cwd(), 'package-lock.json'))).toBe(true);
+    expect(existsSync(resolve(import.meta.dirname, '..', 'package-lock.json'))).toBe(true);
   });
 
   it('configures dependabot cooldowns (3 days, 7 for major)', () => {

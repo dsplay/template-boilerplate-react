@@ -22,7 +22,8 @@ src/
     app/                     <-- top-level component (loader, fonts, i18n)
     intro/                   <-- loading placeholder
     main/                    <-- where the example template values are read/rendered
-build.sh                    <-- zips the Vite build output into template.zip
+scripts/
+  pack.mjs                   <-- zips the Vite build output into template.zip (Windows/macOS/Linux)
 ```
 
 ## File and folder naming
@@ -60,7 +61,7 @@ Skip a numbered section entirely rather than including it empty — don't pad a 
 
 ## Runtime model
 
-- `public/dsplay-data.js` defines `dsplay_config`, `dsplay_media`, and `dsplay_template` mock globals used only in **development**. `build.sh` blanks its content in the production build — the DSPLAY Android app injects the real `window.DSPLAY.getData()` before any script runs.
+- `public/dsplay-data.js` defines `dsplay_config`, `dsplay_media`, and `dsplay_template` mock globals used only in **development**. `scripts/pack.mjs` blanks its content in the production build — the DSPLAY Android app injects the real `window.DSPLAY.getData()` before any script runs.
 - [`@dsplay/react-template-utils`](https://github.com/dsplay/react-template-utils) (which wraps [`@dsplay/template-utils`](https://github.com/dsplay/template-utils)) exposes `useTemplateVal`/`useTemplateBoolVal`/`useTemplateIntVal`/`useTemplateFloatVal` (read a `dsplay_template` variable as string/boolean/integer/float, with an optional default), plus `useTemplate()`/`useMedia()`/`useConfig()` for the raw objects.
 - **Always read template data through these hooks, called inside the function component that uses the value — never call `@dsplay/template-utils`'s vanilla `tval`/`tbval`/`tival`/`tfval`/`config` directly, and never read them at module scope as a one-time constant.** `@dsplay/template-utils` should not appear as a direct dependency in a React template's `package.json` at all (it's still pulled in transitively via `@dsplay/react-template-utils`). Module-scope reads happen to work because DSPLAY injects its data before any module executes, but they break React's reactivity model (a value can't ever update after first render) and were a bug source when [`template-horizontal-info-bar`](https://github.com/dsplay/template-horizontal-info-bar) had them — treat any vanilla `@dsplay/template-utils` import in a React template's `src/` as something to migrate, not a style choice.
 - Template logic lives in `src/components/` — `src/components/main/index.jsx` is the reference example of reading template variables.
@@ -82,7 +83,7 @@ This same section (and the config it describes) should be carried into every new
 
 ## Template variable manifest
 
-`vite.config.js` registers `@dsplay/template-manifest`'s Vite plugin, which on every build statically scans `src/` for `tval`/`useTemplateVal`-style reads and captures `public/dsplay-data.js` as example data, writing `template-variables.json` + `template-example-data.json` into the build output — and therefore into `template.zip` (`npm run zip` runs `build.sh`, which zips the whole build output). The DSPLAY CMS reads these two files to auto-detect a template's variables and seed default preview values, instead of requiring manual registration. See [@dsplay/template-manifest](https://www.npmjs.com/package/@dsplay/template-manifest) for exactly what it detects.
+`vite.config.js` registers `@dsplay/template-manifest`'s Vite plugin, which on every build statically scans `src/` for `tval`/`useTemplateVal`-style reads and captures `public/dsplay-data.js` as example data, writing `template-variables.json` + `template-example-data.json` into the build output — and therefore into `template.zip` (`npm run zip` runs `scripts/pack.mjs`, which zips the whole build output). The DSPLAY CMS reads these two files to auto-detect a template's variables and seed default preview values, instead of requiring manual registration. See [@dsplay/template-manifest](https://www.npmjs.com/package/@dsplay/template-manifest) for exactly what it detects.
 
 ## Commands
 
@@ -90,7 +91,7 @@ This same section (and the config it describes) should be carried into every new
 - `npm run build` — lints, then builds for production.
 - `npm test` / `npm run test:watch` — Vitest.
 - `npm run linter` / `npm run linter:fix` — ESLint on `src`.
-- `npm run zip` — builds, then runs `build.sh` to produce `template.zip` ready for the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create). `build/` and `template.zip` are gitignored.
+- `npm run zip` — builds, then runs `scripts/pack.mjs` to produce `template.zip` ready for the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create). `build/` and `template.zip` are gitignored.
 
 `build`/`zip` chain their steps with `&&` directly in the script (`"build": "npm run linter && vite build"`, `"zip": "npm run build && ..."`) rather than `prebuild`/`prezip` lifecycle hooks — `.npmrc`'s `ignore-scripts=true` (see below) silently skips `pre*`/`post*` hooks for `npm run-script` too, not just install scripts, so a `prezip` step would never actually run and `npm run zip` would silently package a stale/missing `build/`. Keep new multi-step scripts explicit for the same reason — don't reach for `pre*`/`post*` naming in this repo.
 
@@ -104,6 +105,10 @@ This same section (and the config it describes) should be carried into every new
 ## Dependency management (boilerplate maintainers only)
 
 Regular npm dependencies, not vendored files — versions are pinned, so bump explicitly (`npm outdated`, then `npm install <pkg>@<version>`) or merge Dependabot PRs. For a major bump, apply it deliberately and verify `npm start`, `npm run build`, and `npm test` still work before committing — this boilerplate is consumed by other templates, so treat major bumps of `@dsplay/react-template-utils` especially carefully.
+
+### Fixed: `npm run zip` didn't work on Windows at all
+
+`build.sh` (bash + the system `zip` CLI) was the only thing `npm run zip` ran after building — neither ships on Windows, not even under Git Bash (Git for Windows doesn't bundle `zip`/`unzip`). Replaced with `scripts/pack.mjs`, a plain Node script (`fs` + the `archiver` devDependency, pinned to `7.0.1` — the long-established CJS-style `archiver('zip', opts)` API, not `8.x`'s from-scratch ESM rewrite with a very different class-based API and far less real-world mileage) that does the exact same thing (strip `build/test-assets`, write the `dsplay-data.js` placeholder, zip `build/`'s contents flat into `template.zip`) with no OS-specific tooling at all. `npm run zip` now works identically on Windows, macOS and Linux.
 
 ### Known pending bump: ESLint 9 -> 10
 
